@@ -106,24 +106,24 @@ Decision Tree		Accuracy Train: 99.8%	Accuracy Valid: 70.4%
 Best params: class_weight = 'balanced', presort = False
 ```
 
-![image-20191025033715676](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033715676.png)
+![image-20191025033715676](https://github.com/SaxMan96/NLP-Question-Classifier/blob/master/images/DTConfM.png?raw=true)
 ```python
 Random Forest		Accuracy Train: 93.5%	Accuracy Valid: 72.3%
 Best params: class_weight = 'balanced', max_depth = 30
 			 max_features = 19, n_estimators = 100
 ```
-![image-20191025033701539](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033701539.png)
+![image-20191025033701539](https://github.com/SaxMan96/NLP-Question-Classifier/blob/master/images/RFConfM.png?raw=true)
 ```python
 K-Neares Neighbours		Accuracy Train: 99.8%	Accuracy Valid: 32.1%
 Best params: n_neighbors = 10, weights = 'distance'
 ```
-![image-20191025033633422](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033633422.png)
+![image-20191025033633422](https://github.com/SaxMan96/NLP-Question-Classifier/blob/master/images/KNNConfM.png?raw=true)
 ```python
  Logistic Regression		Accuracy Train: 85.7%	Accuracy Valid: 74.6%
  Best params: C = 0.1, multi_class = 'multinomial', solver = 'lbfgs'
 ```
 
-![image-20191025033545848](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033545848.png)
+![image-20191025033545848](https://github.com/SaxMan96/NLP-Question-Classifier/blob/master/images/LRConfM.png?raw=true)
 
 The winner is **Logistic Regression** 🏆
 
