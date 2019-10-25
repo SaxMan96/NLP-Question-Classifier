@@ -99,7 +99,66 @@ count_vect.transform([i for i in questions.values]).toarray().shape
 
 ## Classification
 
+I've tested 4 different classifers using GridSearch with wide param space and CrosValidation.
 
+```python
+Decision Tree		Accuracy Train: 99.8%	Accuracy Valid: 70.4%
+Best params: class_weight = 'balanced', presort = False
+```
 
+![image-20191025033715676](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033715676.png)
+```python
+Random Forest		Accuracy Train: 93.5%	Accuracy Valid: 72.3%
+Best params: class_weight = 'balanced', max_depth = 30
+			 max_features = 19, n_estimators = 100
+```
+![image-20191025033701539](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033701539.png)
+```python
+K-Neares Neighbours		Accuracy Train: 99.8%	Accuracy Valid: 32.1%
+Best params: n_neighbors = 10, weights = 'distance'
+```
+![image-20191025033633422](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033633422.png)
+```python
+ Logistic Regression		Accuracy Train: 85.7%	Accuracy Valid: 74.6%
+ Best params: C = 0.1, multi_class = 'multinomial', solver = 'lbfgs'
+```
 
+![image-20191025033545848](C:\Users\Mateusz\AppData\Roaming\Typora\typora-user-images\image-20191025033545848.png)
 
+The winner is **Logistic Regression** 🏆
+
+Notes:
+
+* I've tested that `PCA` doesn't improve performance of any of classifiers.
+* Also using a `StandarScaler()` wasn't a good idea due to binary character of data.
+* My validation metric was accuracy due to even distibution in class.
+
+## Testing On Production
+
+I've written short function to classify inputed by user questions to one of 4 classes.
+
+```python
+def predict_question(question):
+    x = count_vect.transform([question]).toarray()
+    return classes[clf.predict(x)[0]]
+```
+
+These are results of my classification:
+
+- **Do you like to study?** *yesno*
+
+- **How do you feel rright now?** *summary*
+
+- **What is your name?** *summary*
+
+- **List two of your favourie films.** *list*
+
+- **What is the biggest country in Europe?** *summary*
+
+- **Where are you?** *factoid*
+
+- **How old are you?** *summary*
+
+  
+
+25.10.2019 [Mateusz Dorobek](https://mateuszdorobek.github.io) UPC - Human Language Engineering
